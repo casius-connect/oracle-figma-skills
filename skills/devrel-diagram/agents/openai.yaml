@@ -1,0 +1,7 @@
+interface:
+  display_name: "DevRel Diagram"
+  short_description: "Build on-brand Oracle DevRel AI architecture diagrams in Figma"
+  icon_small: "./assets/oracle-ring.png"
+  icon_large: "./assets/oracle-ring.png"
+  brand_color: "#C74634"
+  default_prompt: "Use $devrel-diagram when building an on-brand AI architecture diagram for Oracle DevRel content (video, blog, talk, slide) against the DevRel Diagram System. Triggers: 'make a diagram', 'agent loop diagram', 'memory architecture diagram', 'sales play slide', 'diagram for the video'. Renders into the user's own duplicate of the system, never the base file."
