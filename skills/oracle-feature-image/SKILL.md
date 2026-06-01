@@ -106,7 +106,7 @@ Use `references/prompt-templates.md` for the output format. Present:
 - three concise directions that keep the same layout system and vary mainly by metaphor or approved asset family
 - one recommendation
 
-Optimize the recommendation for thumbnail clarity first, then conceptual fit, then ease of approval.
+Optimise the recommendation for thumbnail clarity first, then conceptual fit, then ease of approval.
 
 ### 5. Render the chosen direction from the feature-images page
 
@@ -140,8 +140,8 @@ Return:
 - Keep the explainer to `8` words or fewer.
 - Use Oracle Sans for all readable text.
 - Keep the title and explainer as one compact text cluster.
-- Align the text cluster and hero cluster to the same optical vertical center.
-- Keep Oracle Red as a restrained accent, not the dominant color.
+- Align the text cluster and hero cluster to the same optical vertical centre.
+- Keep Oracle Red as a restrained accent, not the dominant colour.
 - Use article-derived ASCII or token texture subtly in the background; it should be partly readable, not loud.
 - Prefer official icon cards or faithful vector simplifications over custom dashboard-like drawings.
 - Use the official Oracle developer logo tile in the bottom-right. If only the bundled ring is available, place it inside a quiet red tile rather than using it as a bare outline.
@@ -172,7 +172,7 @@ Revise before presenting if any answer is "no":
 - Does it avoid invented product symbols where official ones exist?
 - Is the text load within the limit?
 - Is the title/explainer spacing compact and intentional?
-- Are the text cluster and hero cluster vertically centered together?
+- Are the text cluster and hero cluster vertically centred together?
 - Is the palette on-brand and restrained?
 - Is the Oracle logo present, quiet, and using the official tile treatment?
 - Is the background texture subtle?
