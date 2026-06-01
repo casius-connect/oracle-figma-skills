@@ -53,7 +53,10 @@ with known defects. Unfixed-later defects compound.
   `paradigm`, `holistic`, `best-in-class`.
 - Storage label is exactly "Oracle AI Database". In code: every `03 Data/Storage`
   instance with `kind=oracle-db` must have its label TEXT equal to "Oracle AI Database"
-  verbatim. Anything with a version suffix or an abbreviation fails.
+  verbatim. Anything with a version suffix or an abbreviation fails. Render the label
+  with no "Storage" prefix: the 2026-05-17 context pack shows a prefixed form, but the
+  system spec and this skill use the unprefixed label. If in doubt, confirm against the
+  live Figma file.
 - No `FIG. NN` caption. In code: search every TEXT node for `FIG.`. Any match is a
   leftover caption leak and fails.
 

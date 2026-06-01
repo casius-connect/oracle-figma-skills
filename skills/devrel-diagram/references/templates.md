@@ -13,6 +13,9 @@ Component names below match the library exactly: `01 Chrome/Title slate`,
 
 Copy rules apply throughout: British English, no em dashes, and the `03 Data/Storage`
 `kind=oracle-db` label is always exactly "Oracle AI Database" with no version suffix.
+Render that database label exactly as "Oracle AI Database", with no "Storage" prefix.
+The 2026-05-17 context pack shows a prefixed form; the system spec and this skill use
+the unprefixed label. If in doubt, confirm against the live Figma file.
 
 ## Library templates (page 04)
 

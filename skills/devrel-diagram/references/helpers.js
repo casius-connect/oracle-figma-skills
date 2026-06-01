@@ -19,9 +19,11 @@
  * ORACLE SANS WEIGHTS
  * -------------------
  * Oracle Sans (as installed on Casius's machine and in the Figma file) has NO
- * Medium weight. Wherever a spec says "Medium", use "Semi Bold" instead. The font
- * loader below loads the styles the original plans named; if a load fails on
- * "Medium", substitute "Semi Bold".
+ * Medium weight. This substitution is APPLIED in code: every place a spec says
+ * "Medium" now uses the `MEDIUM` constant below, which resolves to "Semi Bold".
+ * The font loader is also resilient: each weight load falls back to "Regular"
+ * if that weight is missing, so a missing weight degrades instead of aborting
+ * the whole build.
  */
 
 // === Brand palette (v1 plan) ===
@@ -39,12 +41,21 @@ const PERSONA_PRIYA = { r: 0x86/255, g: 0xB5/255, b: 0x96/255 };  // #86B596 Pin
 const PERSONA_ALEX  = { r: 0x89/255, g: 0xB2/255, b: 0xB0/255 };  // #89B2B0 Teal 70
 const PERSONA_NEUTRAL_60 = { r: 0xFB/255, g: 0xF9/255, b: 0xF8/255, a: 0.6 };  // Neutral 10 @ 60%
 
+// Oracle Sans has no Medium weight on the installed family; Semi Bold substitutes.
+const MEDIUM = "Semi Bold";
+
 // === Font loader (call once at top of each task) (v1 plan, Phase A4) ===
-// Note: Oracle Sans has no Medium weight. Use Semi Bold wherever a spec says Medium.
+// Oracle Sans has no Medium weight, so MEDIUM resolves to "Semi Bold". Each load
+// falls back to "Regular" if the requested weight is missing, so a missing weight
+// degrades instead of aborting the whole build.
 async function loadFonts() {
-  await figma.loadFontAsync({ family: "Oracle Sans", style: "Medium" });
-  await figma.loadFontAsync({ family: "Oracle Sans", style: "Bold" });
-  await figma.loadFontAsync({ family: "Oracle Sans", style: "Regular" });
+  async function loadOne(style) {
+    try { await figma.loadFontAsync({ family: "Oracle Sans", style }); }
+    catch (e) { await figma.loadFontAsync({ family: "Oracle Sans", style: "Regular" }); }
+  }
+  await loadOne(MEDIUM);
+  await loadOne("Bold");
+  await loadOne("Regular");
 }
 
 // === Title block (custom, sales-play scale) (v1 plan, Phase A4) ===
@@ -67,7 +78,7 @@ async function addTitleBlock(parent, opts) {
   group.appendChild(eb);
 
   const tt = figma.createText();
-  tt.fontName = { family: "Oracle Sans", style: "Medium" };
+  tt.fontName = { family: "Oracle Sans", style: MEDIUM };
   tt.fontSize = 56;
   tt.letterSpacing = { unit: "PERCENT", value: -1 };
   tt.lineHeight = { unit: "PIXELS", value: 64 };
@@ -279,9 +290,9 @@ async function addPersonaIcon(parent, opts) {
   grp.appendChild(sym);
 
   // Name
-  await figma.loadFontAsync({ family: "Oracle Sans", style: "Medium" });
+  await figma.loadFontAsync({ family: "Oracle Sans", style: MEDIUM });
   const nm = figma.createText();
-  nm.fontName = { family: "Oracle Sans", style: "Medium" };
+  nm.fontName = { family: "Oracle Sans", style: MEDIUM };
   nm.fontSize = 20;
   nm.characters = name;
   nm.fills = [{ type: "SOLID", color: NEUTRAL_10 }];
@@ -327,9 +338,9 @@ async function addExplanationTile(parent, opts) {
   tile.strokeWeight = 1;
   parent.appendChild(tile);
 
-  await figma.loadFontAsync({ family: "Oracle Sans", style: "Medium" });
+  await figma.loadFontAsync({ family: "Oracle Sans", style: MEDIUM });
   const t = figma.createText();
-  t.fontName = { family: "Oracle Sans", style: "Medium" };
+  t.fontName = { family: "Oracle Sans", style: MEDIUM };
   t.fontSize = labelSize;
   t.characters = label;
   t.fills = [{ type: "SOLID", color: NEUTRAL_10 }];
