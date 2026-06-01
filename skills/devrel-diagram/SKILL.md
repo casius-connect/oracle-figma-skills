@@ -92,7 +92,7 @@ Failure messages, by cause, each followed by STOP:
 
 | File | Load it when |
 | --- | --- |
-| `references/diagram-system.md` | You need the live component names, the file key, the page list, and the variant props and modes for the system. The source of truth for what exists in the file. |
+| `references/diagram-system.md` | You need the live component names, the file key, the page list, and the variant props and modes for the system. The source of truth for what exists in the file. (Forthcoming: produced from a live read of the Figma file. Until it lands, confirm names and modes against the live file directly.) |
 | `references/visual-system.md` | Always. The visual contract: colour roles, the One Agent Rule, the persona system, density tiers, typography, shape language. |
 | `references/helpers.js` | You are building. Paste in only the functions you need (with their dependencies). |
 | `references/templates.md` | You are choosing a starting layout: the five library templates and the Sales Play scene patterns. |
