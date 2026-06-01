@@ -1,5 +1,6 @@
 # Per-user Figma target, written by the skill at runtime
 skills/devrel-diagram/references/my-file.json
+skills/oracle-feature-image/references/my-file.json
 # OS / editor noise
 .DS_Store
 Thumbs.db
