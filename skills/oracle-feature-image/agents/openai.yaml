@@ -1,0 +1,7 @@
+interface:
+  display_name: "Oracle Feature Image"
+  short_description: "Create Oracle Developers feature images"
+  icon_small: "./assets/oracle-ring.png"
+  icon_large: "./assets/oracle-ring.png"
+  brand_color: "#C74634"
+  default_prompt: "Use $oracle-feature-image to turn a pasted article title and full text into three Oracle Developers feature-image directions that use official Oracle iconography when available and, after selection, one Figma draft with rationale."
