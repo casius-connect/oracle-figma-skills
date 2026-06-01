@@ -19,10 +19,12 @@ Copy each folder under `skills/` into the detected skills directory, preserving
 folder names: `devrel-diagram`, `oracle-feature-image`.
 
 ## 4. Install the required engine skills
-These skills depend on `figma-use`. Clone and install the Figma engine skills repo
-the same way: <link>. Copy `figma-use` and `figma-generate-design` into the same
-skills directory.
-(Recommended, optional: also install Superpowers from <link> for brainstorming.)
+These skills depend on `figma-use`. Install the Figma engine skills (`figma-use`,
+`figma-generate-design`) from the Figma community skills page,
+https://www.figma.com/community/skills (they also ship with the Figma plugin/MCP),
+into the same skills directory.
+(Recommended, optional: also install Superpowers from
+https://github.com/obra/superpowers for brainstorming and the dev-workflow skills.)
 
 ## 5. Report
 Tell the user exactly which skill folders you installed and where, then print the

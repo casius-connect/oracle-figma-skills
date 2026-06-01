@@ -14,8 +14,10 @@ The agent reads `INSTALL.md` and does the rest, including the required engine sk
 ## What you also need (companion installs)
 
 - **Figma engine skills** (required): `figma-use`, `figma-generate-design`.
-  Repo: <link>. The diagram skill cannot run without `figma-use`.
-- **Superpowers** (recommended): brainstorming and dev-workflow skills. Repo: <link>.
+  From the Figma community skills: https://www.figma.com/community/skills (they also
+  ship with the Figma plugin/MCP). The diagram skill cannot run without `figma-use`.
+- **Superpowers** (recommended): brainstorming and dev-workflow skills.
+  https://github.com/obra/superpowers
 
 ## Before first use
 
