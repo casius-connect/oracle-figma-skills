@@ -9,35 +9,46 @@ Hard copy rules that are themselves part of the system: British English, no em
 dashes (use commas, colons, parentheses or "and"), and Oracle's AI database is
 always written exactly "Oracle AI Database" with no version suffix.
 
-## Colour roles (strict)
+**Two contexts.** Much of this contract was written for the Sales Play *video*
+backdrop (dark Sky 140 plate, gold Agent, Oracle Red reserved for the ON-PREM chip).
+The page-04 diagram templates that the `devrel-diagram` skill clones for blogs, talks,
+and slides follow a lighter convention: a light canvas, a single focal block filled in
+the Oracle Red / coral family, and `FIG. NN` figure captions are allowed. Where a rule
+below is specific to the video backdrop, it is marked. The parts that are universal:
+the One Agent Rule (exactly one filled focal block), the persona system, the Oracle AI
+Database label, the shape language, and the storytelling discipline.
 
-Colour means something. A reader who learns one diagram can decode the next. Slate,
-Rose, or Oracle Red on any element outside its role is a defect; the `recolourForDark`
-pass catches most, and the audit reaffirms it.
+## Colour roles
+
+Colour means something. A reader who learns one diagram can decode the next.
 
 | Role | Treatment | Used for |
 | --- | --- | --- |
-| Agent | Brand 170 `#F0CC71` filled tile | The agent. Max one filled agent per slide. The only filled block in the system |
+| Agent / focal block | Exactly one filled block per diagram. Brand 170 `#F0CC71` (gold) on the dark Sales Play backdrop; the Oracle Red / coral family in the light page-04 templates | The agent or model, the single hierarchy anchor |
 | Persona (main cast) | White `#FBF9F8` fill + coloured ring (1.5px) + coloured symbol | Maya, Priya, Alex |
 | Persona (supporting) | White fill + Neutral 10 ring at 60% opacity + neutral symbol | Business Manager, Store User |
-| Explanation tile | White `#FBF9F8` outline only (1px, 25% opacity), no fill | Data sources, problem cards, tool tiles, output tiles, capability chips |
-| Group container (concrete) | Brand Gold solid stroke, label on | Private Agent Factory, Approved Catalogue |
-| Group container (abstraction layer) | Brand Gold dashed stroke, label on | Agent Harness |
-| Oracle AI Database anchor | `Storage·oracle-db` primitive, label exactly "Oracle AI Database" | The persistent data substrate. Position varies by scene (corner, centred below, or enlarged hub) |
-| Oracle Red `#C74634` | Restricted to the ON-PREM chip ONLY | Nowhere else, ever |
-| Background | Sky 140 `#04536F` plate with a radial highlight overlay (Screen blend) | All slides |
+| Explanation tile | Outline only (hair stroke), no fill | Data sources, problem cards, tool tiles, output tiles, capability chips |
+| Group container (concrete) | Solid stroke, label on | Private Agent Factory, Approved Catalogue |
+| Group container (abstraction layer) | Dashed stroke, label on | Agent Harness |
+| Oracle AI Database anchor | `Storage·oracle-db` primitive, label exactly "Oracle AI Database" | The persistent data substrate. Position varies (corner, centred below, or enlarged hub) |
+| Oracle Red `#C74634` | On the Sales Play video backdrop, reserved for the ON-PREM chip only. In the light page-04 templates it is also the focal-block fill and the connector colour, which is expected, not a defect | as noted |
+| Background | Video: Sky 140 `#04536F` plate with a radial highlight overlay. Page-04 templates: a light canvas (or a Dark clone via the Colour mode) | All diagrams |
 
 The three semantic colour roles underneath the system are Agent (primary accent),
 Memory (Rose 140 light / Pine 70 dark), and Storage (Sky 140 light / Teal 70 dark).
-Personas and explanation tiles sit on top of that base as the v3 additions.
+Personas and explanation tiles sit on top of that base as the v3 additions. Light and
+dark are Figma Variable Modes on the Colour collection (see `diagram-system.md`), not
+component variants; switch a frame with `setExplicitVariableModeForCollection`.
 
 ## The One Agent Rule
 
-Zero or one filled Agent per diagram. The Agent is the hierarchy anchor and the only
-filled block in the entire system. Everything else (LLM, Tool, User, Memory, Storage,
-personas, explanation tiles) is outlined or white-filled. A frame with two filled
-Agents is a validation warning, not a hard fail, and is only acceptable when the
-diagram is deliberately depicting multiple pipeline stages (and a code comment says so).
+Zero or one filled focal block (the Agent or model) per diagram. It is the hierarchy
+anchor and the only filled block; everything else (LLM, Tool, User, Memory, Storage,
+personas, explanation tiles) is outlined or white-filled. Its fill hue follows the
+context (gold on the dark video backdrop, the focal colour in the light templates), but
+there is never more than one filled focal block. Two filled blocks is a validation
+warning, acceptable only when the diagram deliberately depicts multiple pipeline stages
+and a code comment says so.
 
 ## The persona system
 
@@ -96,18 +107,17 @@ one per dot.
 
 ## Typography
 
-- Title: 56pt Oracle Sans Medium, Neutral 10, max width set per scene. Build with
-  `addTitleBlock`.
-- Eyebrow: 14pt Oracle Sans Bold, Brand 170, 14% tracking. A single noun or short
-  phrase (`TODAY`, `SCALE`, `BRIDGE`, `PLATFORM`). Never the `ORACLE SALES PLAY · X`
-  form from earlier versions.
-- Captions (`FIG. NN · ...`): dropped entirely. Do not add a caption row to the title
-  block. The audit flags any `FIG.` text as a leak.
+- Title: 56pt Oracle Sans Medium, max width set per scene. Build with `addTitleBlock`.
+- Eyebrow: 14pt Oracle Sans Bold, Brand 170, 14% tracking. A short phrase. On Sales
+  Play scenes this is a single noun (`TODAY`, `SCALE`, `BRIDGE`); the page-04 templates
+  use `ORACLE DEVELOPER EXPLAINED`. Never the `ORACLE SALES PLAY · X` form from earlier
+  versions.
+- Captions (`FIG. NN · ...`): dropped on the Sales Play video backdrop (they read as
+  noise on a moving image), where the audit flags any `FIG.` text. On the page-04
+  diagram templates a figure caption is part of the design and is allowed.
 - Pull quotes: most slides have none. Add one only when the slide genuinely needs a
-  stated line. If used: 32pt Oracle Sans Medium, Neutral 10 at 85% opacity, max width
-  720px. A non-title text node at 28pt or larger is treated as an unexpected pull quote
-  by the audit.
-- Sub-line annotations: 14pt Oracle Sans Regular, Neutral 10 at 70 to 80% opacity.
+  stated line. If used: 32pt Oracle Sans Medium at 85% opacity, max width 720px.
+- Sub-line annotations: 14pt Oracle Sans Regular at 70 to 80% opacity.
 - Italic for editorial lines (for example `reconciled in their head, every week`).
 
 Oracle Sans has no Medium weight on the target machine, so use Semi Bold wherever a
@@ -123,23 +133,23 @@ spec says Medium.
 - Dashed connectors carry no arrowheads (they mean "compatible with" or "manual, not
   contracted", not directional flow). Use `dashPattern: [4, 4]`.
 - Single label per block. No subtitles inside blocks.
-- No coloured gradient washes beyond the canvas and the Agent fill. No glows, no glass
-  blur. Shadow only on the filled Agent block.
+- No coloured gradient washes beyond the canvas and the focal-block fill. No glows, no
+  glass blur. Shadow only on the filled focal block.
 
 ## The storytelling discipline
 
-The voiceover carries the narrative. The slide shows the structural reality the voice
-can only gesture at: relationships, simultaneity, scale, scope, layout. If the slide
-repeats what the voice is saying, it is wrong. If it shows what the voice can only
-point at, it is right.
+The surrounding copy carries the narrative: the voiceover on a video, the paragraph in
+a blog or talk. The diagram shows the structural reality that copy can only gesture at:
+relationships, simultaneity, scale, scope, layout. If the diagram repeats what the copy
+says, it is wrong. If it shows what the copy can only point at, it is right.
 
 In practice:
 
-- Slide labels are short and structural, not narrative. Avoid full sentences where a
+- Diagram labels are short and structural, not narrative. Avoid full sentences where a
   label and a layout would do.
-- The voice may say "approved tools, policy at query time"; the slide says
+- The copy may say "approved tools, policy at query time"; the diagram says
   `APPROVED CATALOGUE · POLICY AT QUERY TIME ◆` on a container, the same idea given
   geometric form rather than written out.
-- Intentional exceptions exist where a slide line adds a structural claim the voice
-  does not make explicit, or where a closing strip deliberately mirrors the voice's
-  final words for rhyme. These are the exception, not the rule.
+- Intentional exceptions exist where a line adds a structural claim the copy does not
+  make explicit, or where a closing strip deliberately mirrors the copy's final words.
+  These are the exception, not the rule.

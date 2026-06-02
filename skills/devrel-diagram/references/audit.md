@@ -10,11 +10,24 @@ where it cannot, check it by screenshot at native size.
 If anything fails, stop, fix it in place, and re-run the whole check. Do not move on
 with known defects. Unfixed-later defects compound.
 
+**Two contexts.** These checks were generalised from the Sales Play *video* system,
+where some rules are strict because the diagram is a continuous moving backdrop. When
+you build a general DevRel diagram from the page-04 templates (for a blog, talk, or
+slide), two of those rules relax, and they are marked "video only" below:
+
+- a `FIG. NN` figure caption is allowed on a general diagram; it is only banned on a
+  video backdrop;
+- the single focal block may be filled in the light-mode focal colour (the Oracle Red
+  / coral family the page-04 light templates use) rather than gold. The universal rule
+  is "exactly one filled focal block", not a specific hue.
+
+Treat every other check as universal.
+
 ## 1. Connector integrity
 
 - Terminates within 8px of an anchor at both ends. In code: for every connector vector
-  (built via `drawConnector` / `drawConnectorStrict`, or any free vector with a Brand
-  Gold stroke), parse the path's start and end points (after applying the node's x/y
+  (built via `drawConnector` / `drawConnectorStrict`, or any free vector with a coloured
+  stroke), parse the path's start and end points (after applying the node's x/y
   offset), build the candidate-anchor set from the frame's instances, frames, groups,
   persona tiles and explanation tiles, and confirm each endpoint sits within 8px of the
   nearest anchor's bounding-box edge. An endpoint with no anchor within range is a
@@ -36,14 +49,16 @@ with known defects. Unfixed-later defects compound.
 
 ## 2. Visual story coherence
 
-- By screenshot: take a `get_screenshot` of the completed frame at native size
-  (1920x1080 for Sales Play). Read the voiceover line this diagram sits behind.
-- Ask: does the slide show the structure the voice can only gesture at (relationships,
-  simultaneity, scale, scope, layout), or does it duplicate what the voice is saying?
-  If it duplicates the voice, the slide is wrong.
+- By screenshot: take a `get_screenshot` of the completed frame at native size (the
+  frame's own dimensions, e.g. 1020x560 for a page-04 template, 1920x1080 for a Sales
+  Play scene). Read the line this diagram sits behind: the voiceover line on a video, or
+  the surrounding paragraph in a blog or talk.
+- Ask: does the diagram show the structure that copy can only gesture at (relationships,
+  simultaneity, scale, scope, layout), or does it merely restate the copy? If it
+  restates, it is wrong.
 - Ask: would someone seeing this for the first time understand the structural
-  relationship being claimed without the voice interpreting the geometry? If they would
-  need the voice to decode it, the slide is wrong.
+  relationship being claimed without the surrounding copy interpreting the geometry? If
+  they would need the copy to decode it, the diagram is wrong.
 
 ## 3. Label and copy integrity
 
@@ -57,8 +72,10 @@ with known defects. Unfixed-later defects compound.
   with no "Storage" prefix: the 2026-05-17 context pack shows a prefixed form, but the
   system spec and this skill use the unprefixed label. If in doubt, confirm against the
   live Figma file.
-- No `FIG. NN` caption. In code: search every TEXT node for `FIG.`. Any match is a
-  leftover caption leak and fails.
+- `FIG. NN` caption (video only). On a Sales Play video backdrop, captions read as
+  noise: search every TEXT node for `FIG.` and flag any match. On a general diagram
+  (blog, talk, slide) built from the page-04 templates, a figure caption is allowed and
+  is not a failure.
 
 ## 4. Density check
 
@@ -76,3 +93,13 @@ with known defects. Unfixed-later defects compound.
   confirm that element is present at roughly the stated position. Missing any: log and
   fix before exporting. Conversely, any visible element not accounted for in the spec
   is likely a leftover and should be cleaned up.
+
+## 6. Oracle AI Database anchor (when the source names it)
+
+- If the script, blog, or brief names Oracle AI Database (or "26ai"), the diagram
+  should include the `03 Data/Storage` `kind=oracle-db` primitive labelled exactly
+  "Oracle AI Database", as the persistent data substrate. The page-04 templates that
+  predate this rule (for example the Memory Retrieval Loop, whose long-term store is
+  generic Vector / JSON / Relational / Task state boxes) may not have it: add the anchor
+  when the source calls for it. If the source does not mention Oracle AI Database, do
+  not force the anchor in.

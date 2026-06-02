@@ -85,6 +85,11 @@ Failure messages, by cause, each followed by STOP:
   `references/helpers.js` functions.
 - Render the database label exactly as `Oracle AI Database`, with no "Storage" prefix
   and no version suffix.
+- When the source (script, blog, brief) names Oracle AI Database or 26ai, include the
+  `03 Data/Storage` `kind=oracle-db` anchor labelled exactly `Oracle AI Database` as the
+  data substrate, even if the chosen template ships with only generic stores (for
+  example the Memory Retrieval Loop). Do not force the anchor in when the source does
+  not mention it.
 - British English (optimise, colour, favour, organise).
 - No em dashes. Use commas, colons, parentheses, or "and".
 
